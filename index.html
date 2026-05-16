@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macly — Keep your Mac clean &amp; fast</title>
+  <meta name="description" content="Macly is a powerful macOS cleaner that removes junk files, duplicates, browser caches, and more. One-time purchase, lifetime updates." />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand:        #6465F2;
+      --brand-dark:   #4B4CE8;
+      --brand-light:  #8687F5;
+      --bg:           #ffffff;
+      --bg-alt:       #f5f5f9;
+      --card-bg:      #ffffff;
+      --card-border:  rgba(0,0,0,0.07);
+      --text:         #111827;
+      --text-2:       #6b7280;
+      --divider:      rgba(0,0,0,0.07);
+      --shadow:       0 4px 24px rgba(0,0,0,0.07);
+      --shadow-lg:    0 12px 48px rgba(0,0,0,0.10);
+      --radius:       16px;
+      --junk:         #3A82F6;
+      --duplicates:   #8D5CF6;
+      --apps:         #EC4A99;
+      --updates:      #10B981;
+      --photos:       #F59E0B;
+      --mail:         #06B6D4;
+      --dmg:          #F97316;
+      --trash:        #EF4444;
+      --dev:          #84CC16;
+      --screenshots:  #A78BFA;
+      --browser:      #0EA5E9;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:          #0f1117;
+        --bg-alt:      #161824;
+        --card-bg:     #1a1d2e;
+        --card-border: rgba(255,255,255,0.07);
+        --text:        #f0f0f8;
+        --text-2:      #9199b0;
+        --divider:     rgba(255,255,255,0.07);
+        --shadow:      0 4px 24px rgba(0,0,0,0.30);
+        --shadow-lg:   0 12px 48px rgba(0,0,0,0.40);
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 60px;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--divider);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
+    .nav-actions { display: flex; gap: 10px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      background: transparent;
+      color: var(--brand);
+      border: 1.5px solid var(--brand);
+    }
+    .btn-outline:hover { background: var(--brand); color: #fff; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-2);
+    }
+    .btn-ghost:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 80px 5% 60px;
+      background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    }
+    .hero-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      margin: 0 auto 24px;
+      display: block;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--brand); }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-2);
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-actions .btn { padding: 13px 28px; font-size: 15px; border-radius: 12px; }
+    .hero-meta {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--text-2);
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 5px; }
+
+    /* ── Section ── */
+    section { padding: 72px 5%; }
+    .section-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-2);
+      font-size: 17px;
+      max-width: 520px;
+      margin: 0 auto 48px;
+    }
+
+    /* ── Smart Scan ── */
+    .smart-scan-section { background: var(--bg-alt); }
+    .smart-scan-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 48px;
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+    .smart-scan-icon {
+      flex-shrink: 0;
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      box-shadow: 0 8px 32px rgba(100,101,242,0.35);
+    }
+    .smart-scan-body h3 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .smart-scan-body p { color: var(--text-2); margin-bottom: 20px; }
+    .pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--brand);
+      color: #fff;
+      opacity: 0.9;
+    }
+
+    /* ── Features Grid ── */
+    .features-section { background: var(--bg); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+    .feature-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+    .feature-card p { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+
+    /* ── Pricing ── */
+    .pricing-section { background: var(--bg-alt); }
+    .pricing-card {
+      max-width: 420px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .pricing-price {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pricing-price span { font-size: 26px; font-weight: 600; vertical-align: top; margin-top: 10px; display: inline-block; }
+    .pricing-sub { color: var(--text-2); font-size: 14px; margin-bottom: 28px; }
+    .pricing-features { list-style: none; margin-bottom: 32px; text-align: left; }
+    .pricing-features li {
+      padding: 8px 0;
+      font-size: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 1px solid var(--divider);
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .check { color: var(--updates); font-size: 16px; }
+    .pricing-cta { width: 100%; padding: 14px; font-size: 16px; border-radius: 12px; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--divider);
+      padding: 40px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+    footer a { color: var(--text-2); text-decoration: none; }
+    footer a:hover { color: var(--brand); }
+    .footer-links { display: flex; gap: 20px; }
+
+    @media (max-width: 640px) {
+      .smart-scan-card { flex-direction: column; padding: 32px 24px; }
+      .pricing-card { padding: 36px 24px; }
+      nav { padding: 0 4%; }
+      section { padding: 56px 4%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="icon.png" alt="Macly icon" />
+    Macly
+  </a>
+  <div class="nav-actions">
+    <a class="btn btn-ghost" href="#features">Features</a>
+    <a class="btn btn-ghost" href="#pricing">Pricing</a>
+    <a class="btn btn-primary" href="https://github.com/onkeyi/maclyclean-site/releases/latest/download/Macly.dmg">Download</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <img class="hero-icon" src="icon.png" alt="Macly" />
+  <h1>Keep your Mac<br /><span>clean &amp; fast.</span></h1>
+  <p>Remove junk files, duplicates, browser caches, and more — with one smart scan.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="https://github.com/onkeyi/maclyclean-site/releases/latest/download/Macly.dmg">
+      ↓ Download for Free
+    </a>
+    <a class="btn btn-outline" href="https://yourstore.lemonsqueezy.com/buy/your-product-id">
+      Buy License
+    </a>
+  </div>
+  <div class="hero-meta">
+    <span>🍎 macOS 13+</span>
+    <span>🔒 Privacy-first</span>
+    <span>💳 One-time purchase</span>
+    <span>♾️ Lifetime updates</span>
+  </div>
+</section>
+
+<!-- Smart Scan -->
+<section class="smart-scan-section">
+  <p class="section-label">Smart Scan</p>
+  <h2 class="section-title">One click. Five modules.</h2>
+  <p class="section-sub">Smart Scan runs the most effective cleaners in parallel and shows results in seconds.</p>
+  <div class="smart-scan-card">
+    <div class="smart-scan-icon">✨</div>
+    <div class="smart-scan-body">
+      <h3>Automatic deep clean</h3>
+      <p>Macly scans junk files, trash, DMG images, browser caches, and desktop screenshots simultaneously — freeing up space without the guesswork.</p>
+      <div class="pill-row">
+        <span class="pill">Junk Files</span>
+        <span class="pill">Trash</span>
+        <span class="pill">DMG Files</span>
+        <span class="pill">Browser Cache</span>
+        <span class="pill">Screenshots</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section" id="features">
+  <p class="section-label">Modules</p>
+  <h2 class="section-title">Everything your Mac needs</h2>
+  <p class="section-sub">11 specialized cleaners, each designed to target a specific source of clutter.</p>
+  <div class="features-grid">
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--junk) 15%,transparent)">🗑️</div>
+      <h4>Junk Files</h4>
+      <p>System caches, logs, and temporary files that pile up silently.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--duplicates) 15%,transparent)">📄</div>
+      <h4>Duplicates</h4>
+      <p>Duplicate files detected by content — not just name or size.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--apps) 15%,transparent)">📦</div>
+      <h4>Applications</h4>
+      <p>Uninstall apps cleanly, removing all associated support files.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--updates) 15%,transparent)">🔄</div>
+      <h4>App Updates</h4>
+      <p>Update packages and leftover download caches from app installers.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--photos) 15%,transparent)">📷</div>
+      <h4>Photos</h4>
+      <p>Large videos and screenshots buried inside your Photos library.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--mail) 15%,transparent)">✉️</div>
+      <h4>Mail</h4>
+      <p>Email attachments and large downloads stored by Apple Mail.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--dmg) 15%,transparent)">💿</div>
+      <h4>DMG Files</h4>
+      <p>Disk image files left in Downloads after installing apps.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--trash) 15%,transparent)">🗂️</div>
+      <h4>Trash</h4>
+      <p>Files waiting in Trash — reviewed before permanent removal.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--dev) 15%,transparent)">🔨</div>
+      <h4>Dev Caches</h4>
+      <p>Docker images, Xcode derived data, npm, Gradle, and more.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--screenshots) 15%,transparent)">📸</div>
+      <h4>Desktop Screenshots</h4>
+      <p>Screenshot files saved to Desktop that accumulate over time.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--browser) 15%,transparent)">🌐</div>
+      <h4>Browser Cache</h4>
+      <p>Chrome, Firefox, Safari, Edge, Brave, Arc and more.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section" id="pricing">
+  <p class="section-label">Pricing</p>
+  <h2 class="section-title">Simple, honest pricing</h2>
+  <p class="section-sub">Buy once. Use forever. No subscription, no hidden fees.</p>
+  <div class="pricing-card">
+    <div class="pricing-badge">One-time Purchase</div>
+    <div class="pricing-price"><span>¥</span>X,XXX</div>
+    <p class="pricing-sub">or $XX USD · all taxes included</p>
+    <ul class="pricing-features">
+      <li><span class="check">✓</span> All 11 cleaning modules</li>
+      <li><span class="check">✓</span> Smart Scan</li>
+      <li><span class="check">✓</span> Lifetime updates</li>
+      <li><span class="check">✓</span> Privacy-first — no cloud, no telemetry</li>
+      <li><span class="check">✓</span> macOS 13 Ventura and later</li>
+    </ul>
+    <a class="btn btn-primary pricing-cta" href="https://yourstore.lemonsqueezy.com/buy/your-product-id">
+      Buy Macly →
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div>© 2026 Macly. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://yourstore.lemonsqueezy.com">Support</a>
+    <a href="https://github.com/onkeyi/maclyclean-site/releases">Releases</a>
+  </div>
+</footer>
+
+</body>
+</html>
