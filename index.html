@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Macly — Keep your Mac clean &amp; fast</title>
-  <meta name="description" content="Macly is a powerful macOS cleaner that removes junk files, duplicates, browser caches, and more. One-time purchase, lifetime updates." />
+  <meta name="description" content="Macly is a powerful macOS cleaner. Smart Scan is free forever — upgrade once for all 11 modules. No subscription, lifetime updates." />
   <link rel="icon" type="image/png" href="icon.png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -141,7 +141,7 @@
     .hero p {
       font-size: 18px;
       color: var(--text-2);
-      max-width: 480px;
+      max-width: 520px;
       margin: 0 auto 36px;
     }
     .hero-actions {
@@ -231,6 +231,15 @@
       opacity: 0.9;
     }
 
+    /* ── How It Works ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
     /* ── Features Grid ── */
     .features-section { background: var(--bg); }
     .features-grid {
@@ -267,16 +276,72 @@
 
     /* ── Pricing ── */
     .pricing-section { background: var(--bg-alt); }
-    .pricing-card {
-      max-width: 420px;
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 780px;
       margin: 0 auto;
+    }
+    .pricing-tier {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      padding: 48px 40px;
+      box-shadow: var(--shadow);
+      padding: 36px 28px;
       text-align: center;
+      transition: transform 0.18s, box-shadow 0.18s;
     }
+    .pricing-tier:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pricing-tier.featured {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 2px var(--brand), var(--shadow-lg);
+    }
+    .pricing-tier .machines {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .pricing-tier .price {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pricing-tier .price sup {
+      font-size: 22px;
+      font-weight: 600;
+      vertical-align: top;
+      margin-top: 8px;
+      display: inline-block;
+    }
+    .pricing-tier .once { font-size: 13px; color: var(--text-2); margin-bottom: 20px; }
+    .pricing-tier .tier-features {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .pricing-tier .tier-features li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      gap: 8px;
+    }
+    .pricing-tier .tier-features li:last-child { border-bottom: none; }
+    .no-sub-banner {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--text-2);
+    }
+    .no-sub-banner strong { color: var(--text); }
+
     .pricing-badge {
       display: inline-block;
       background: var(--brand);
@@ -287,29 +352,8 @@
       text-transform: uppercase;
       padding: 4px 12px;
       border-radius: 20px;
-      margin-bottom: 20px;
     }
-    .pricing-price {
-      font-size: 52px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .pricing-price span { font-size: 26px; font-weight: 600; vertical-align: top; margin-top: 10px; display: inline-block; }
-    .pricing-sub { color: var(--text-2); font-size: 14px; margin-bottom: 28px; }
-    .pricing-features { list-style: none; margin-bottom: 32px; text-align: left; }
-    .pricing-features li {
-      padding: 8px 0;
-      font-size: 14px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      border-bottom: 1px solid var(--divider);
-    }
-    .pricing-features li:last-child { border-bottom: none; }
-    .check { color: var(--updates); font-size: 16px; }
-    .pricing-cta { width: 100%; padding: 14px; font-size: 16px; border-radius: 12px; }
+    .check { color: var(--updates); font-size: 14px; }
 
     /* ── Footer ── */
     footer {
@@ -330,7 +374,8 @@
 
     @media (max-width: 640px) {
       .smart-scan-card { flex-direction: column; padding: 32px 24px; }
-      .pricing-card { padding: 36px 24px; }
+      .how-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
       nav { padding: 0 4%; }
       section { padding: 56px 4%; }
     }
@@ -347,7 +392,7 @@
   <div class="nav-actions">
     <a class="btn btn-ghost" href="#features">Features</a>
     <a class="btn btn-ghost" href="#pricing">Pricing</a>
-    <a class="btn btn-primary" href="https://github.com/onkeyi/maclyclean-site/releases/latest/download/Macly.dmg">Download</a>
+    <a class="btn btn-primary" href="https://github.com/onkeyi/maclyclean-site/releases/latest/download/Macly.dmg">Download Free</a>
   </div>
 </nav>
 
@@ -355,41 +400,75 @@
 <section class="hero">
   <img class="hero-icon" src="icon.png" alt="Macly" />
   <h1>Keep your Mac<br /><span>clean &amp; fast.</span></h1>
-  <p>Remove junk files, duplicates, browser caches, and more — with one smart scan.</p>
+  <p>Remove junk files, duplicates, caches, and more.
+     Smart Scan is <strong>always free</strong> — upgrade for all 11 modules.</p>
   <div class="hero-actions">
     <a class="btn btn-primary" href="https://github.com/onkeyi/maclyclean-site/releases/latest/download/Macly.dmg">
       ↓ Download for Free
     </a>
-    <a class="btn btn-outline" href="https://macly.lemonsqueezy.com/checkout/buy/95f0e9b2-6a88-4b9c-8066-5165dca92fe0">
-      Buy License
+    <a class="btn btn-outline" href="#pricing">
+      See Pricing
     </a>
   </div>
   <div class="hero-meta">
+    <span>🆓 Smart Scan free forever</span>
     <span>🍎 macOS 13+</span>
-    <span>🔒 Privacy-first</span>
     <span>💳 One-time purchase</span>
-    <span>♾️ Lifetime updates</span>
+    <span>♾️ Free updates</span>
   </div>
 </section>
 
 <!-- Smart Scan -->
 <section class="smart-scan-section">
   <p class="section-label">Smart Scan</p>
-  <h2 class="section-title">One click. Five modules.</h2>
-  <p class="section-sub">Smart Scan runs the most effective cleaners in parallel and shows results in seconds.</p>
+  <h2 class="section-title">Smart Scan — always free.</h2>
+  <p class="section-sub">No license required. Smart Scan finds junk files, system caches,
+  and logs in seconds — forever free for every user.</p>
   <div class="smart-scan-card">
     <div class="smart-scan-icon">✨</div>
     <div class="smart-scan-body">
-      <h3>Automatic deep clean</h3>
-      <p>Macly scans junk files, trash, DMG images, browser caches, and desktop screenshots simultaneously — freeing up space without the guesswork.</p>
+      <h3>One click. Instant results.</h3>
+      <p>Macly scans system caches and logs without any setup.
+         Smart Scan is free forever — upgrade to unlock all 11 specialized modules.</p>
       <div class="pill-row">
         <span class="pill">Junk Files</span>
-        <span class="pill">Trash</span>
-        <span class="pill">DMG Files</span>
-        <span class="pill">Browser Cache</span>
-        <span class="pill">Screenshots</span>
+        <span class="pill" style="background:var(--updates)">Always Free</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section style="background:var(--bg); padding:72px 5%;">
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title">Free to start. Unlock everything.</h2>
+  <p class="section-sub">Try all 11 modules free for 7 days. Smart Scan stays free forever.</p>
+
+  <div class="how-grid">
+
+    <!-- Free -->
+    <div class="feature-card">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--updates) 15%,transparent);font-size:28px;width:52px;height:52px;">🆓</div>
+      <h4 style="font-size:16px;margin-bottom:8px">Free — always</h4>
+      <ul style="list-style:none;font-size:13px;color:var(--text-2);line-height:2">
+        <li><span class="check">✓</span> Smart Scan (Junk Files)</li>
+        <li><span class="check">✓</span> 7-day trial of all modules</li>
+        <li><span class="check">✓</span> No credit card required</li>
+      </ul>
+    </div>
+
+    <!-- Licensed -->
+    <div class="feature-card" style="border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)">
+      <div class="feature-icon" style="background:color-mix(in srgb,var(--brand) 15%,transparent);font-size:28px;width:52px;height:52px;">🔑</div>
+      <h4 style="font-size:16px;margin-bottom:8px">Licensed — from $30</h4>
+      <ul style="list-style:none;font-size:13px;color:var(--text-2);line-height:2">
+        <li><span class="check">✓</span> All 11 cleaning modules</li>
+        <li><span class="check">✓</span> One-time purchase</li>
+        <li><span class="check">✓</span> Free updates — forever</li>
+        <li><span class="check">✓</span> No subscription, ever</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
@@ -451,7 +530,8 @@
     <div class="feature-card">
       <div class="feature-icon" style="background:color-mix(in srgb,var(--dev) 15%,transparent)">🔨</div>
       <h4>Dev Caches</h4>
-      <p>Docker images, Xcode derived data, npm, Gradle, and more.</p>
+      <p>50+ language ecosystems — Python, Node, Go, Rust, Java, Swift, and more.
+         Smart exclusion prevents dev caches from mixing into Junk Files.</p>
     </div>
 
     <div class="feature-card">
@@ -473,22 +553,70 @@
 <section class="pricing-section" id="pricing">
   <p class="section-label">Pricing</p>
   <h2 class="section-title">Simple, honest pricing</h2>
-  <p class="section-sub">Buy once. Use forever. No subscription, no hidden fees.</p>
-  <div class="pricing-card">
-    <div class="pricing-badge">One-time Purchase</div>
-    <div class="pricing-price"><span>¥</span>X,XXX</div>
-    <p class="pricing-sub">or $XX USD · all taxes included</p>
-    <ul class="pricing-features">
-      <li><span class="check">✓</span> All 11 cleaning modules</li>
-      <li><span class="check">✓</span> Smart Scan</li>
-      <li><span class="check">✓</span> Lifetime updates</li>
-      <li><span class="check">✓</span> Privacy-first — no cloud, no telemetry</li>
-      <li><span class="check">✓</span> macOS 13 Ventura and later</li>
-    </ul>
-    <a class="btn btn-primary pricing-cta" href="https://macly.lemonsqueezy.com/checkout/buy/95f0e9b2-6a88-4b9c-8066-5165dca92fe0">
-      Buy Macly →
-    </a>
+  <p class="section-sub">
+    One-time purchase. <strong>No subscription — ever.</strong>
+    Free updates included for life.
+  </p>
+
+  <div class="pricing-grid">
+
+    <!-- Personal -->
+    <div class="pricing-tier">
+      <div class="machines">1 Mac</div>
+      <div class="price"><sup>$</sup>30</div>
+      <p class="once">one-time · no renewal</p>
+      <ul class="tier-features">
+        <li><span class="check">✓</span> All 11 modules</li>
+        <li><span class="check">✓</span> Free updates</li>
+        <li><span class="check">✓</span> No subscription</li>
+      </ul>
+      <a class="btn btn-outline" style="width:100%;justify-content:center"
+         href="https://macly.lemonsqueezy.com/checkout/buy/95f0e9b2-6a88-4b9c-8066-5165dca92fe0">
+        Buy Personal →
+      </a>
+    </div>
+
+    <!-- Family (featured) -->
+    <div class="pricing-tier featured">
+      <div class="pricing-badge" style="margin-bottom:12px">Most Popular</div>
+      <div class="machines">Up to 3 Macs</div>
+      <div class="price"><sup>$</sup>60</div>
+      <p class="once">one-time · no renewal</p>
+      <ul class="tier-features">
+        <li><span class="check">✓</span> All 11 modules</li>
+        <li><span class="check">✓</span> Free updates</li>
+        <li><span class="check">✓</span> No subscription</li>
+        <li><span class="check">✓</span> Share across 3 Macs</li>
+      </ul>
+      <a class="btn btn-primary" style="width:100%;justify-content:center"
+         href="https://macly.lemonsqueezy.com/checkout/buy/95f0e9b2-6a88-4b9c-8066-5165dca92fe0">
+        Buy Family →
+      </a>
+    </div>
+
+    <!-- Team -->
+    <div class="pricing-tier">
+      <div class="machines">Up to 10 Macs</div>
+      <div class="price"><sup>$</sup>100</div>
+      <p class="once">one-time · no renewal</p>
+      <ul class="tier-features">
+        <li><span class="check">✓</span> All 11 modules</li>
+        <li><span class="check">✓</span> Free updates</li>
+        <li><span class="check">✓</span> No subscription</li>
+        <li><span class="check">✓</span> Up to 10 Macs</li>
+      </ul>
+      <a class="btn btn-outline" style="width:100%;justify-content:center"
+         href="https://macly.lemonsqueezy.com/checkout/buy/95f0e9b2-6a88-4b9c-8066-5165dca92fe0">
+        Buy Team →
+      </a>
+    </div>
+
   </div>
+
+  <p class="no-sub-banner">
+    🔒 <strong>No subscription. Ever.</strong>
+    Pay once, use Macly and receive all future updates — free, forever.
+  </p>
 </section>
 
 <!-- Footer -->
