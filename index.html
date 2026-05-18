@@ -623,7 +623,7 @@
     <article class="problem-card">
       <div class="problem-icon">📁</div>
       <h3>Hidden System Caches</h3>
-      <p>Every app you use — from Safari to Xcode — writes cache data to <code>~/Library/Caches</code>. These folders grow silently in the background. A freshly-used Mac can accumulate several gigabytes of cache files within weeks, and macOS provides no automated tool to clear them safely.</p>
+      <p>Every app you use — from Safari to Xcode — writes cache data to hidden system folders. These folders grow silently in the background. A freshly-used Mac can accumulate several gigabytes of cache files within weeks, and macOS provides no automated tool to clear them safely.</p>
     </article>
     <article class="problem-card">
       <div class="problem-icon">📄</div>
@@ -638,7 +638,7 @@
     <article class="problem-card">
       <div class="problem-icon">🔨</div>
       <h3>Developer Tool Bloat</h3>
-      <p>npm installs packages into <code>~/.npm</code>, Gradle into <code>~/.gradle</code>, pip into <code>~/.cache/pip</code>, and Docker keeps pulled images and build layers indefinitely. Combined, developer tool caches routinely exceed 20–50 GB — even on machines that are used only occasionally for development.</p>
+      <p>npm, Gradle, pip, and Docker each keep their own caches and pulled images indefinitely. Combined, developer tool caches routinely exceed 20–50 GB — even on machines that are used only occasionally for development.</p>
     </article>
   </div>
 </section>
@@ -652,7 +652,7 @@
     <div class="smart-scan-icon" aria-hidden="true">✨</div>
     <div class="smart-scan-body">
       <h3>One click. Instant results.</h3>
-      <p>Smart Scan runs eight cleaning modules in parallel using asynchronous execution, scanning <code>~/Library/Caches</code>, <code>~/Library/Logs</code>, duplicate files, screenshots, browser caches, DMG files, and more — all at the same time. Results appear as they are found, sorted by size so the biggest space savings are always at the top. No configuration. No setup. Just launch Macly and click Scan.</p>
+      <p>Smart Scan runs eight cleaning modules in parallel using asynchronous execution, sweeping system caches, logs, duplicate files, screenshots, browser caches, DMG files, and more — all at the same time. Results appear as they are found, sorted by size so the biggest space savings are always at the top. No configuration. No setup. Just launch Macly and click Scan.</p>
       <div class="pill-row">
         <span class="pill">Junk Files</span>
         <span class="pill" style="background:var(--green)">Always Free</span>
@@ -673,7 +673,7 @@
     <article class="feature-card">
       <div class="feature-icon" style="background:color-mix(in srgb,var(--junk) 15%,transparent)">🗑️</div>
       <h3>Junk Files <span style="color:var(--green);font-size:11px;font-weight:600">FREE FOREVER</span></h3>
-      <p>System caches, application logs, and temporary files pile up silently inside <code>~/Library/Caches</code> and <code>~/Library/Logs</code>. Every app you use writes cache data continuously. Macly scans both directories in seconds and removes files that macOS regenerates automatically — safe to delete every time, with no impact on your apps or data. This is the most impactful single action you can take to free storage on a Mac, and with Macly it is always free.</p>
+      <p>System caches, application logs, and temporary files pile up silently in hidden system folders. Every app you use writes cache data continuously. Macly scans them in seconds and removes files that macOS regenerates automatically — safe to delete every time, with no impact on your apps or data. This is the most impactful single action you can take to free storage on a Mac, and with Macly it is always free.</p>
     </article>
 
     <article class="feature-card">
@@ -685,7 +685,7 @@
     <article class="feature-card">
       <div class="feature-icon" style="background:color-mix(in srgb,var(--apps) 15%,transparent)">📦</div>
       <h3>App Uninstaller</h3>
-      <p>Dragging an app to Trash leaves behind a trail of hidden files — preferences in <code>~/Library/Preferences</code>, caches in <code>~/Library/Caches</code>, application support data in <code>~/Library/Application Support</code>, and launch agents in <code>~/Library/LaunchAgents</code>. Macly's App Uninstaller finds all files associated with every installed application and presents them in a sortable list. Review, select, and remove completely — recovering the storage that a simple drag-to-Trash operation always misses.</p>
+      <p>Dragging an app to Trash leaves behind a trail of hidden files — preferences, caches, application support data, and launch agents scattered across your system library. Macly's App Uninstaller finds all files associated with every installed application and presents them in a sortable list. Review, select, and remove completely — recovering the storage that a simple drag-to-Trash operation always misses.</p>
     </article>
 
     <article class="feature-card" style="border-color:var(--photos);box-shadow:0 0 0 1px var(--photos)">
@@ -697,25 +697,25 @@
     <article class="feature-card">
       <div class="feature-icon" style="background:color-mix(in srgb,var(--mail) 15%,transparent)">✉️</div>
       <h3>Mail Attachment Cleaner</h3>
-      <p>Apple Mail stores every email attachment you have ever received directly on your disk inside <code>~/Library/Mail</code>. After years of using Mail, this folder can grow to tens of gigabytes filled with PDFs, ZIP archives, images, videos, and Office documents from emails you may have read once and forgotten. Macly scans the Mail Attachments directory and surfaces the largest files for review. Full Disk Access is required because macOS protects <code>~/Library/Mail</code> through its TCC (Transparency, Consent, and Control) privacy framework.</p>
+      <p>Apple Mail stores every email attachment you have ever received directly on your disk. After years of using Mail, this hidden folder can grow to tens of gigabytes filled with PDFs, ZIP archives, images, videos, and Office documents from emails you may have read once and forgotten. Macly scans the Mail Attachments directory and surfaces the largest files for review. Full Disk Access is required because macOS protects the Mail folder through its privacy framework.</p>
     </article>
 
     <article class="feature-card">
       <div class="feature-icon" style="background:color-mix(in srgb,var(--dmg) 15%,transparent)">💿</div>
       <h3>DMG File Finder</h3>
-      <p>Every app you download and install from the internet typically arrives as a .dmg disk image. The common workflow — mount it, drag the app to Applications, unmount — leaves the original .dmg file sitting in Downloads indefinitely. Macly recursively searches your entire home folder (skipping <code>~/Library</code> to avoid system files) and lists every .dmg file by size. Individual installer images typically range from 100 MB to several gigabytes, and a typical Mac used over a few years can accumulate dozens of them.</p>
+      <p>Every app you download and install from the internet typically arrives as a .dmg disk image. The common workflow — mount it, drag the app to Applications, unmount — leaves the original .dmg file sitting in Downloads indefinitely. Macly recursively searches your entire home folder and lists every .dmg file by size. Individual installer images typically range from 100 MB to several gigabytes, and a typical Mac used over a few years can accumulate dozens of them.</p>
     </article>
 
     <article class="feature-card">
       <div class="feature-icon" style="background:color-mix(in srgb,var(--trash) 15%,transparent)">🗂️</div>
       <h3>Trash Emptier</h3>
-      <p>Files moved to Trash continue to occupy storage until the Trash is permanently emptied. It is easy to forget that large files — videos, disk images, old projects — are sitting in Trash consuming gigabytes you could be using elsewhere. Macly shows the full contents of your Trash with individual file sizes and a total summary, letting you review everything before confirming permanent removal. Full Disk Access is required on macOS 13 and later to enumerate the <code>.Trash</code> folder.</p>
+      <p>Files moved to Trash continue to occupy storage until the Trash is permanently emptied. It is easy to forget that large files — videos, disk images, old projects — are sitting in Trash consuming gigabytes you could be using elsewhere. Macly shows the full contents of your Trash with individual file sizes and a total summary, letting you review everything before confirming permanent removal. Full Disk Access is required on macOS 13 and later to enumerate Trash contents.</p>
     </article>
 
     <article class="feature-card">
       <div class="feature-icon" style="background:color-mix(in srgb,var(--dev) 15%,transparent)">🔨</div>
       <h3>Developer Cache Cleaner</h3>
-      <p>Software developers accumulate enormous caches from build tools, package managers, and container platforms. Macly targets the most common sources: npm global cache (<code>~/.npm</code>), Yarn cache (<code>~/.yarn/cache</code>), pip cache (<code>~/.cache/pip</code>), Gradle caches (<code>~/.gradle/caches</code>), Maven local repository (<code>~/.m2/repository</code>), Cargo registry (<code>~/.cargo/registry</code>), Xcode DerivedData (<code>~/Library/Developer/Xcode/DerivedData</code>), and Docker images (via <code>docker system prune</code>). Smart exclusion logic prevents active project <code>node_modules</code> folders and Python virtual environments from being flagged.</p>
+      <p>Software developers accumulate enormous caches from build tools, package managers, and container platforms. Macly targets the most common sources: npm, Yarn, pip, Gradle, Maven, Cargo, Xcode DerivedData, and Docker images. Smart exclusion logic prevents active project dependencies and virtual environments from being flagged, so only genuinely stale cache data is suggested for removal.</p>
     </article>
 
     <article class="feature-card">
@@ -983,7 +983,7 @@
     <details>
       <summary>Is Smart Scan really free forever?</summary>
       <div class="faq-body">
-        Yes — no catch, no expiry, no account. Smart Scan (the Junk Files module) is completely free with no time limit. It scans <code>~/Library/Caches</code> and <code>~/Library/Logs</code>, the two most impactful sources of recoverable disk space on a Mac. We believe every Mac user should be able to clear basic junk for free, which is why Smart Scan is free in every version of Macly, forever.
+        Yes — no catch, no expiry, no account. Smart Scan (the Junk Files module) is completely free with no time limit. It targets system caches and logs — the most impactful sources of recoverable disk space on a Mac. We believe every Mac user should be able to clear basic junk for free, which is why Smart Scan is free in every version of Macly, forever.
       </div>
     </details>
     <details>
@@ -1013,7 +1013,7 @@
     <details>
       <summary>Why does the Mail module require Full Disk Access?</summary>
       <div class="faq-body">
-        Apple Mail stores all attachments inside <code>~/Library/Mail</code>, a directory that macOS protects through its TCC (Transparency, Consent, and Control) privacy framework. Full Disk Access is the specific permission that grants apps the ability to read TCC-protected directories including Mail, Messages, and Safari data. You grant it once in System Settings → Privacy &amp; Security → Full Disk Access. Macly only reads file metadata and paths — it never uploads, transmits, or reads the content of your emails or attachments.
+        Apple Mail stores all attachments in a folder that macOS protects through its TCC (Transparency, Consent, and Control) privacy framework. Full Disk Access is the specific permission that grants apps the ability to read these protected directories. You grant it once in System Settings → Privacy &amp; Security → Full Disk Access. Macly only reads file metadata and paths — it never uploads, transmits, or reads the content of your emails or attachments.
       </div>
     </details>
     <details>
