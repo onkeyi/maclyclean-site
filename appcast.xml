@@ -7,9 +7,9 @@
     <language>en</language>
     <item>
       <title>Macly 1.0.1</title>
-      <pubDate>火, 19  5月 2026 00:24:10 +0000</pubDate>
+      <pubDate>Mon, 19 May 2026 00:24:10 +0000</pubDate>
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <sparkle:version>101</sparkle:version>
+      <sparkle:version>2</sparkle:version>
       <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
       <enclosure
         url="https://maclyclean.com/Macly.dmg"
