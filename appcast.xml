@@ -6,16 +6,16 @@
     <description>Macly release notes</description>
     <language>en</language>
     <item>
-      <title>Macly 1.0.0</title>
-      <pubDate>Sun, 18 May 2026 12:00:00 +0000</pubDate>
+      <title>Macly 1.0.1</title>
+      <pubDate>火, 19  5月 2026 00:24:10 +0000</pubDate>
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-      <sparkle:version>1</sparkle:version>
-      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:version>101</sparkle:version>
+      <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
       <enclosure
         url="https://maclyclean.com/Macly.dmg"
         type="application/octet-stream"
-        length="2567761"
-        sparkle:edSignature="voY5sj9I0OKwU2pkfHJnGz2Xoyyi0SQYZQ4Ftl6tkMrDM8T4xHWR+6YPvcwrIDDxWjR09NmkzriUDBra8Q95Cw=="
+        length="2569554"
+        sparkle:edSignature="4PD60ixW8gPnxeGwz1EfY1Y0qJ8npqyxz3C5awVPSTuN5u9EzzgVxyQHkCXkz6jrENwhENxsgiPdssTfDiDtCA=="
       />
     </item>
   </channel>
