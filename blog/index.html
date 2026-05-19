@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>Macly Blog — Mac Cleaning Tips, macOS Storage Guides & App Updates</title>
+  <meta name="description" content="Mac cleaning tips, disk space guides, and Macly app updates. Learn how to free up storage on macOS, remove junk files, find duplicates, and keep your Mac running fast." />
+  <meta name="author" content="Macly" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://maclyclean.com/blog/" />
+  <link rel="sitemap" type="application/xml" href="https://maclyclean.com/sitemap.xml" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Macly" />
+  <meta property="og:url" content="https://maclyclean.com/blog/" />
+  <meta property="og:title" content="Macly Blog — Mac Cleaning Tips & macOS Storage Guides" />
+  <meta property="og:description" content="Mac cleaning tips, disk space guides, and Macly app updates. Learn how to free up storage on macOS and keep your Mac running fast." />
+  <meta property="og:image" content="https://maclyclean.com/store-banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="Macly Blog — Mac Cleaning Tips" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Macly Blog — Mac Cleaning Tips & macOS Storage Guides" />
+  <meta name="twitter:description" content="Mac cleaning tips, disk space guides, and Macly updates. Free up storage on macOS." />
+  <meta name="twitter:image" content="https://maclyclean.com/store-banner.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/icon.png" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Macly Blog",
+    "description": "Mac cleaning tips, disk space guides, and Macly app updates.",
+    "url": "https://maclyclean.com/blog/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Macly",
+      "url": "https://maclyclean.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://maclyclean.com/icon.png"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #5b5ef4;
+      --brand-dark: #4547d0;
+      --text: #1a1a2e;
+      --text-2: #555577;
+      --bg: #f8f8fc;
+      --card-bg: #ffffff;
+      --card-border: #e8e8f0;
+      --radius: 16px;
+      --shadow: 0 2px 16px rgba(91,94,244,0.08);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+    }
+    .nav-logo img { border-radius: 6px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-2);
+      font-size: 15px;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--brand); }
+    .nav-links a.active { color: var(--brand); font-weight: 600; }
+    .btn-nav {
+      background: var(--brand);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      transition: background 0.15s !important;
+    }
+    .btn-nav:hover { background: var(--brand-dark) !important; }
+
+    /* HERO */
+    .blog-hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 64px 24px 48px;
+      text-align: center;
+    }
+    .blog-hero .eyebrow {
+      display: inline-block;
+      background: rgba(91,94,244,0.1);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 20px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .blog-hero p {
+      font-size: 18px;
+      color: var(--text-2);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* POSTS GRID */
+    .posts-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    /* POST CARD */
+    .post-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .post-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(91,94,244,0.14);
+    }
+    .post-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #e8e8f8 0%, #d0d0f0 100%);
+    }
+    .post-card-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #5b5ef4 0%, #8b8ef8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .post-card-body { padding: 20px 22px 24px; }
+    .post-category {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+    .post-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+    .post-card p {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+    .post-meta time { font-weight: 500; }
+    .post-meta .dot { opacity: 0.4; }
+    .read-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--brand);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .featured-card {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .featured-card .post-card-img-placeholder {
+      aspect-ratio: auto;
+      min-height: 260px;
+      border-radius: 0;
+    }
+    @media (max-width: 640px) {
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-card .post-card-img-placeholder { min-height: 200px; }
+    }
+    .featured-card .post-card-body {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-card .post-card h2 {
+      font-size: clamp(20px, 3vw, 26px);
+      margin-bottom: 14px;
+    }
+    .featured-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #5b5ef4, #8b8ef8);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #5b5ef4 0%, #8b5cf6 100%);
+      padding: 64px 24px;
+      text-align: center;
+      color: #fff;
+    }
+    .cta-section h2 {
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .cta-section p { font-size: 17px; opacity: 0.88; margin-bottom: 28px; }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--brand);
+      padding: 14px 32px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 14px;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+    .footer-inner { max-width: 960px; margin: 0 auto; }
+    .footer-links { display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/icon.png" alt="Macly Mac Cleaner App icon" width="28" height="28" loading="eager" />
+        Macly
+      </a>
+      <div class="nav-links">
+        <a href="/#why-macly">Why Macly</a>
+        <a href="/#modules">Modules</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/" class="active">Blog</a>
+        <a href="/Macly.dmg" class="btn-nav">&#8659; Download Free</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="blog-hero">
+    <span class="eyebrow">&#128218; Mac Tips &amp; Guides</span>
+    <h1>The Macly Blog</h1>
+    <p>Mac cleaning tips, storage guides, and updates to help you keep your Mac fast and clutter-free.</p>
+  </header>
+
+  <!-- Posts -->
+  <main class="posts-section">
+    <div class="posts-grid">
+
+      <!-- Featured Post -->
+      <article class="post-card featured-card" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="post-card-img-placeholder" aria-hidden="true">&#128274;</div>
+        <div class="post-card-body">
+          <span class="featured-badge">&#11088; Featured</span>
+          <div class="post-category">Storage Guide</div>
+          <h2 itemprop="headline">How to Free Up Disk Space on Mac (2026 Complete Guide)</h2>
+          <p itemprop="description">Your Mac says storage is almost full — but where did all the space go? This guide walks you through every category of hidden clutter: system caches, duplicate files, old DMG installers, dev tool data, and more.</p>
+          <div class="post-meta">
+            <time datetime="2026-05-15" itemprop="datePublished">May 15, 2026</time>
+            <span class="dot">·</span>
+            <span class="read-time">&#9200; 8 min read</span>
+          </div>
+          <br/>
+          <span class="read-more">Read article &#8594;</span>
+        </div>
+        <meta itemprop="author" content="Macly Team" />
+        <meta itemprop="url" content="https://maclyclean.com/blog/free-up-disk-space-mac/" />
+      </article>
+
+      <!-- Post 2 -->
+      <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="post-card-img-placeholder" aria-hidden="true">&#128190;</div>
+        <div class="post-card-body">
+          <div class="post-category">Mac Tips</div>
+          <h2 itemprop="headline">What Are Mac System Caches and Is It Safe to Delete Them?</h2>
+          <p itemprop="description">System caches can grow to several gigabytes over time. Learn what they contain, which ones are safe to remove, and how Macly handles them automatically.</p>
+          <div class="post-meta">
+            <time datetime="2026-05-10" itemprop="datePublished">May 10, 2026</time>
+            <span class="dot">·</span>
+            <span class="read-time">&#9200; 5 min read</span>
+          </div>
+        </div>
+        <meta itemprop="author" content="Macly Team" />
+      </article>
+
+      <!-- Post 3 -->
+      <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="post-card-img-placeholder" aria-hidden="true">&#128203;</div>
+        <div class="post-card-body">
+          <div class="post-category">Developer Guide</div>
+          <h2 itemprop="headline">Cleaning Xcode, npm, pip, and Docker Caches on macOS</h2>
+          <p itemprop="description">Developer tools quietly accumulate gigabytes of cached data. Here is how to reclaim disk space from Xcode derived data, npm, pip, Cargo, and Docker image layers.</p>
+          <div class="post-meta">
+            <time datetime="2026-05-05" itemprop="datePublished">May 5, 2026</time>
+            <span class="dot">·</span>
+            <span class="read-time">&#9200; 6 min read</span>
+          </div>
+        </div>
+        <meta itemprop="author" content="Macly Team" />
+      </article>
+
+      <!-- Post 4 -->
+      <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="post-card-img-placeholder" aria-hidden="true">&#128247;</div>
+        <div class="post-card-body">
+          <div class="post-category">Photos &amp; Media</div>
+          <h2 itemprop="headline">How to Find and Delete Large Videos Hidden in Your Photos Library</h2>
+          <p itemprop="description">Your Photos library may contain hundreds of megabytes of forgotten screenshots and videos. Learn how to find and safely remove them with a full-size preview before deleting.</p>
+          <div class="post-meta">
+            <time datetime="2026-04-28" itemprop="datePublished">Apr 28, 2026</time>
+            <span class="dot">·</span>
+            <span class="read-time">&#9200; 4 min read</span>
+          </div>
+        </div>
+        <meta itemprop="author" content="Macly Team" />
+      </article>
+
+      <!-- Post 5 -->
+      <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="post-card-img-placeholder" aria-hidden="true">&#128464;</div>
+        <div class="post-card-body">
+          <div class="post-category">Mac Tips</div>
+          <h2 itemprop="headline">Why Dragging Apps to Trash Does Not Fully Uninstall Them</h2>
+          <p itemprop="description">When you drag an app to Trash, dozens of hidden support files stay behind. Here is where macOS stores app leftovers — and how to clean them properly.</p>
+          <div class="post-meta">
+            <time datetime="2026-04-20" itemprop="datePublished">Apr 20, 2026</time>
+            <span class="dot">·</span>
+            <span class="read-time">&#9200; 5 min read</span>
+          </div>
+        </div>
+        <meta itemprop="author" content="Macly Team" />
+      </article>
+
+      <!-- Post 6 -->
+      <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="post-card-img-placeholder" aria-hidden="true">&#127939;</div>
+        <div class="post-card-body">
+          <div class="post-category">App Update</div>
+          <h2 itemprop="headline">Macly v1.2.2 — What&#39;s New</h2>
+          <p itemprop="description">Macly v1.2.2 is out with improved duplicate detection speed, better iCloud photo streaming support, and a new onboarding flow. Here is everything that changed.</p>
+          <div class="post-meta">
+            <time datetime="2026-05-19" itemprop="datePublished">May 19, 2026</time>
+            <span class="dot">·</span>
+            <span class="read-time">&#9200; 3 min read</span>
+          </div>
+        </div>
+        <meta itemprop="author" content="Macly Team" />
+      </article>
+
+    </div><!-- /posts-grid -->
+  </main>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-label="Download Macly">
+    <h2>Start cleaning your Mac — free, right now.</h2>
+    <p>Download Macly and reclaim gigabytes in minutes. Smart Scan is free forever.</p>
+    <a href="/Macly.dmg" class="btn-cta">&#8659; Download Macly Free</a>
+    <p style="margin-top:16px;font-size:14px;opacity:0.7;">macOS 13 Ventura+ &middot; Apple Silicon &amp; Intel &middot; No account required</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p>&copy; 2026 Macly. All rights reserved. Not affiliated with Apple Inc.</p>
+      <div class="footer-links">
+        <a href="https://github.com/onkeyi/maclyclean-site/discussions" rel="noopener">Support</a>
+        <a href="https://github.com/onkeyi/maclyclean-site/releases" rel="noopener">Releases</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog/">Blog</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
